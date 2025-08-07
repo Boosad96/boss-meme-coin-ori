@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Boss Meme Coin Creator</title>
+    <meta name="description" content="Create and deploy Boss-branded meme coins on Base with @debabhi" />
+    
+    <!-- Farcaster Frame Meta Tags -->
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="https://boss-meme-coin-frontend.vercel.app/frame-image.png" />
+    <meta property="fc:frame:button:1" content="Create Meme Coin" />
+    <meta property="fc:frame:button:1:action" content="link" />
+    <meta property="fc:frame:button:1:target" content="https://boss-meme-coin-frontend.vercel.app" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Boss Meme Coin Creator" />
+    <meta property="og:description" content="Create and deploy Boss-branded meme coins on Base with @debabhi" />
+    <meta property="og:image" content="https://boss-meme-coin-frontend.vercel.app/og-image.png" />
+    <meta property="og:url" content="https://boss-meme-coin-frontend.vercel.app" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Boss Meme Coin Creator" />
+    <meta name="twitter:description" content="Create and deploy Boss-branded meme coins on Base with @debabhi" />
+    <meta name="twitter:image" content="https://boss-meme-coin-frontend.vercel.app/twitter-image.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Farcaster SDK for Frame Actions -->
+    <script>
+      // Initialize Farcaster SDK when available
+      if (window.parent !== window) {
+        // Running in frame context
+        window.addEventListener('message', (event) => {
+          if (event.data.type === 'fc_ready') {
+            // Frame is ready
+            event.source.postMessage({ type: 'fc_ready' }, '*');
+          }
+        });
+        
+        // Signal that the frame is ready
+        window.parent.postMessage({ type: 'fc_ready' }, '*');
+      }
+    </script>
+  </body>
+</html>
